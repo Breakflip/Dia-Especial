@@ -7,7 +7,7 @@
 /* CONFIGURACIÓN PRINCIPAL */
 
 const TARGET = new Date(
-  "2026-11-20T12:00:00-06:00"
+  "2026-11-20T00:00:00-06:00"
 ).getTime();
 
 const CORRECT_PIN = "201225";
