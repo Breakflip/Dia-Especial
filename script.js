@@ -109,6 +109,8 @@ updateCountdown();
 ========================================= */
 
 let letterAnimated = false;
+let letterOriginalHTML = null;
+let letterFollowRaf = 0;
 
 function animateLetter() {
   if (letterAnimated) return;
@@ -117,6 +119,7 @@ function animateLetter() {
   if (!letter) return;
 
   letterAnimated = true;
+  if (letterOriginalHTML === null) letterOriginalHTML = letter.innerHTML;
   letter.classList.add("typing-active");
 
   const paragraphs = letter.querySelectorAll("p");
@@ -160,9 +163,106 @@ function animateLetter() {
   const totalDuration =
     characterIndex * characterSpeed * 1000;
 
+  followTyping(letter, characterSpeed);
+
   setTimeout(() => {
     letter.classList.remove("typing-active");
   }, totalDuration + 500);
+}
+
+
+/* =========================================
+   VOLVER A EMPEZAR (cartel de Minecraft)
+   Reinicia la experiencia desde el regalo,
+   sin pasar por la cuenta regresiva ni el PIN
+========================================= */
+
+function resetExperience() {
+  // Regalo cerrado otra vez
+  const gift = document.getElementById("open-gift");
+  if (gift) gift.classList.remove("opening");
+
+  // Carta lista para escribirse de nuevo
+  cancelAnimationFrame(letterFollowRaf);
+  const letter = document.querySelector(".letter-card");
+  if (letter && letterOriginalHTML !== null) {
+    letter.classList.remove("typing-active");
+    letter.innerHTML = letterOriginalHTML;
+  }
+  letterAnimated = false;
+
+  // Fotos sin seleccionar
+  document.querySelectorAll(".polaroid").forEach(card => {
+    card.classList.remove("selected");
+    card.style.transform = "";
+  });
+}
+
+const restartSign = document.getElementById("restart-sign");
+
+if (restartSign) {
+  restartSign.addEventListener("click", () => {
+    if (restartSign.classList.contains("go")) return;
+
+    restartSign.classList.add("go");
+
+    setTimeout(() => {
+      resetExperience();
+      showScreen("gift-screen");
+      restartSign.classList.remove("go");
+    }, 420);
+  });
+}
+
+
+/* La hoja baja sola mientras se escribe.
+   Si la persona toca o desliza la carta, se detiene el
+   seguimiento automático para que lea a su ritmo. */
+
+function followTyping(letter, characterSpeed) {
+  const scroller = letter.querySelector(".letter-scroll");
+  const chars = letter.querySelectorAll(".typing-char");
+
+  if (!scroller || !chars.length) return;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  cancelAnimationFrame(letterFollowRaf);
+
+  const startTime = performance.now();
+  const lookAhead = 70;      // píxeles de aire debajo de la línea que se escribe
+  let userTookControl = false;
+  let position = scroller.scrollTop;
+
+  const stop = () => { userTookControl = true; };
+  ["wheel", "touchstart", "pointerdown", "keydown"].forEach(name => {
+    scroller.addEventListener(name, stop, { passive: true, once: true });
+  });
+
+  function step(now) {
+    if (userTookControl) return;
+
+    const index = Math.min(
+      chars.length - 1,
+      Math.floor((now - startTime) / (characterSpeed * 1000))
+    );
+
+    const current = chars[index];
+    const lineBottom = current.offsetTop + current.offsetHeight;
+    const wanted = lineBottom - scroller.clientHeight + lookAhead;
+
+    if (wanted > position) {
+      position += Math.max(0.5, (wanted - position) * 0.12);
+      scroller.scrollTop = position;
+    }
+
+    if (index < chars.length - 1) {
+      letterFollowRaf = requestAnimationFrame(step);
+    } else {
+      scroller.scrollTo({ top: scroller.scrollHeight, behavior: "smooth" });
+    }
+  }
+
+  letterFollowRaf = requestAnimationFrame(step);
 }
 
 
@@ -426,8 +526,9 @@ function createPetals() {
 
 createPetals();
 
+
 /* =========================================
-   REPRODUCTOR DE MÚSICA
+   11. REPRODUCTOR DE MÚSICA
    VOLUMEN INTERACTIVO
 ========================================= */
 
@@ -447,8 +548,8 @@ if (
   volumeValue
 ) {
 
-  // Volumen inicial: 12 %
-  backgroundMusic.volume = 0.12;
+  // Volumen inicial: 15 %
+  backgroundMusic.volume = 0.15;
 
   // Actualizar apariencia de la barra
   function updateVolume() {
@@ -468,7 +569,6 @@ if (
         rgba(255,255,255,.19) 100%
       )
     `;
-
   }
 
   updateVolume();
@@ -507,7 +607,6 @@ if (
           "Error al iniciar la música:",
           error
         );
-
       }
 
     } else {
@@ -527,9 +626,7 @@ if (
       );
 
       musicStatus.textContent = "MÚSICA EN PAUSA";
-
     }
-
   });
 
   // Sincronizar el reproductor si el audio termina
@@ -548,7 +645,5 @@ if (
     );
 
     musicStatus.textContent = "MÚSICA EN PAUSA";
-
   });
-
 }

@@ -19,10 +19,11 @@
   <!-- FUENTES -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <!-- ESTILOS -->
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/themes.css">
 </head>
 
 <body>
@@ -39,7 +40,7 @@
   <div class="music-player" id="music-player">
 
     <audio id="background-music" loop>
-      <source src="PENDIENTE" type="audio/mpeg">
+      <source src="assets/music/es-por-ti.mp3" type="audio/mpeg">
     </audio>
 
     <button
@@ -52,7 +53,7 @@
     </button>
 
     <div class="music-info">
-      <span class="music-title">Aún es secreto</span>
+      <span class="music-title">Juanes - Es por Ti</span>
       <span class="music-status" id="music-status">MÚSICA EN PAUSA</span>
     </div>
 
@@ -73,7 +74,9 @@
 
   <main>
 
-    <!-- 01. CUENTA REGRESIVA -->
+    <!-- =====================================
+         01. CUENTA REGRESIVA
+    ====================================== -->
     <section class="screen active" id="countdown-screen">
 
       <div class="petal-layer" aria-hidden="true">
@@ -134,7 +137,7 @@
       </p>
 
       <button class="gift-cta" id="open-pin" hidden>
-        ✦ &nbsp; OPEN HER GIFT &nbsp; ✦
+        ✦ &nbsp; ABRE TU REGALO &nbsp; ✦
       </button>
 
       <div class="lock-note" id="lock-note">
@@ -147,7 +150,9 @@
       </div>
     </section>
 
-    <!-- 02. CONTRASEÑA PIN -->
+    <!-- =====================================
+         02. CONTRASEÑA PIN
+    ====================================== -->
     <section class="screen" id="pin-screen">
 
       <div class="eyebrow">
@@ -172,18 +177,18 @@
       <p class="pin-feedback" id="pin-feedback" aria-live="polite">&nbsp;</p>
 
       <div class="keypad" id="keypad">
-        <button data-key="1">1</button>
-        <button data-key="2">2</button>
-        <button data-key="3">3</button>
-        <button data-key="4">4</button>
-        <button data-key="5">5</button>
-        <button data-key="6">6</button>
-        <button data-key="7">7</button>
-        <button data-key="8">8</button>
-        <button data-key="9">9</button>
-        <button class="key-special" data-key="clear">⌫</button>
-        <button data-key="0">0</button>
-        <button class="key-special" data-key="enter">↵</button>
+        <button type="button" data-key="1">1</button>
+        <button type="button" data-key="2">2</button>
+        <button type="button" data-key="3">3</button>
+        <button type="button" data-key="4">4</button>
+        <button type="button" data-key="5">5</button>
+        <button type="button" data-key="6">6</button>
+        <button type="button" data-key="7">7</button>
+        <button type="button" data-key="8">8</button>
+        <button type="button" data-key="9">9</button>
+        <button type="button" class="key-special" data-key="clear">⌫</button>
+        <button type="button" data-key="0">0</button>
+        <button type="button" class="key-special" data-key="enter">↵</button>
       </div>
 
       <div class="bottom-mark">
@@ -191,7 +196,9 @@
       </div>
     </section>
 
-    <!-- 03. REGALO INTERACTIVO -->
+    <!-- =====================================
+         03. REGALO INTERACTIVO
+    ====================================== -->
     <section class="screen" id="gift-screen">
 
       <div class="eyebrow">TU SORPRESA ESTÁ AQUÍ</div>
@@ -202,7 +209,7 @@
 
       <p class="muted">Toca la cajita para descubrirlo</p>
 
-      <button class="gift-button" id="open-gift" aria-label="Abrir regalo">
+      <button class="gift-button" id="open-gift" aria-label="Abrir regalo" type="button">
         <span class="gift-glow"></span>
 
         <span class="gift-box">
@@ -228,7 +235,9 @@
       </div>
     </section>
 
-    <!-- 04. TU DÍA ESPECIAL -->
+    <!-- =====================================
+         04. TU DÍA ESPECIAL
+    ====================================== -->
     <section class="screen celebration-screen" id="special-screen">
 
       <div class="celebration-glow"></div>
@@ -248,12 +257,14 @@
         Y yo tengo la suerte de celebrarlo contigo.
       </p>
 
-      <button class="text-button next-screen" data-next="letter-screen">
+      <button class="text-button next-screen" data-next="letter-screen" type="button">
         CONTINUAR <span>→</span>
       </button>
     </section>
 
-    <!-- 05. CARTA DE CUMPLEAÑOS -->
+    <!-- =====================================
+         05. CARTA DE CUMPLEAÑOS
+    ====================================== -->
     <section class="screen content-screen" id="letter-screen">
 
       <div class="eyebrow">
@@ -263,29 +274,72 @@
       <h2 class="section-title script-title">Happy Birthday</h2>
 
       <article class="letter-card">
+       <div class="letter-scroll">
         <div class="letter-ornament">✧</div>
 
         <p class="letter-greeting">
-          Para la persona que hace mis días más bonitos:
+          Para la persona que hace mis días felices:
         </p>
 
         <p>
-          Hoy es tu día, y aunque quisiera encontrar las palabras
-          perfectas para describir lo especial que eres, creo que
-          ninguna sería suficiente.
+          Jamás sé que palabras usar ni cómo expresarme,
+          pero quiero que sepas que eres la razón de mi felicidad y por la cual
+          cada día me esfuerzo por ser mejor.
         </p>
 
         <p>
-          Por eso preparé este pequeño espacio: para recordarte
-          lo mucho que vales, lo feliz que me hace compartir
-          momentos contigo y lo afortunado que me siento de
-          tenerte en mi vida.
+          Hoy en este día tan especial para tí, quiero devolverte un poco de lo tanto que me has dado y has hecho por mi.
+          Jamás me cansaré de decirte que te amo, y que eres la persona más importante en mi vida.
         </p>
 
         <p>
-          Deseo que este nuevo año esté lleno de razones para
-          sonreír, sueños cumplidos, aventuras inesperadas
-          y muchísimo amor.
+          Siempre pienso en ti a cada segundo de mis días, tu eres luz, ese brillo con el que no podría vivir si me falta.
+          Hoy quiero recordarte la maravillosa personita que eres (1.50) y que ese corazón de pollo me ha salvado tantas veces, que me encuentro en deuda con tu amor.
+        </p>
+
+        <p>
+          No encuentro palabras, no sé cómo expresar todo lo que hay dentro de mí, ese mar de cosas que provocas, que conmutan en abismales olas de emociones
+          y pensamientos que nunca podría haberme imaginado que sentiría, hasta que llegaste a mi vida...
+        </p>
+
+        <p>
+          Eres mi persona favorita, el amor de mi vida, mi Pochina, mi primera vez en tantas cosas, mi primer apodo, mi primer te amo con mi vida, mi primer confidente musical,
+          mi primer persona que quiero a futuro, mi primer familia, mi primer juramento de amor y promesa de amarnos hasta después de la muerte.
+          Son tantísimas las razones por la cual me enamoré de ti, que siempre haces que encuentre más cada día que pasa.
+        </p>
+
+        <p>
+          Siempre te desearé lo mejor para tí, yo quiero que seas felíz en cada etapa de tu vida, que cumplas todos tus sueños, metas, objetivos, y cualquier cosa que te propongas.
+          Porque si mi amor, te conozco, sé la gran mujer que eres, lo inteligente, dedicada, trabajadora, exigente contigo misma, preocupada, creativa, sensible y amante de de la vida
+          que eres, y apuesto mi vida a que serás una gran mujer, más de lo que ya eres y has conseguido.
+        </p>
+
+        <p>
+          No exageré ni mentir al decir que soy el hombre más orgulloso de ti, no sabes cómo me siento al saber que te he podido ver en lo que te has convertido (y eso que aún faltan muchos años),
+          siempre seré tu fan #1, yo te apoyaré en todo, no estás sola y jamás lo estarpás, porque tu y yo somos un ecuipo, donde yo, te admiro y siempre te veré como la mejor del mundo.
+        </p>
+
+        <p>
+          Sabes que no soy fan de dirigirme solo al físico, pero si de verdad pudieras verte através de mis ojos, jamás dudarías del exorbitante amor que siento al verte.
+          Esos ojos que tanto amas, que no dudo ni un poco en regalártelos, y que te los podré dar en unos años con nuestra familia.
+        </p>
+
+        <p>
+          Aún tengo tanto que decirte, pero me gustaría guardarlo para un día que tengo guardado bajo llave je.
+          Así que por ahora, quiero felicitarte, desearte un feliz cumpleaños, disfruta mucho tu día, vive la vida con ese brillo que emanas, y gracias por dejarme ser parte de tu vida.
+        </p>
+
+        <p>
+          Perdón por no poder pasar tu día a tu lado, quise hacer de todo para hacerte sentir amada en mi ausencia, pero prometo (aunque odie las promesas), que la próxima vez estaré a tu lado en este hermoso día.
+        </p>
+
+        <p>
+          Agradezco al universo por permitirme seguir junto a ti, agradezco por ponernos en nuestro camino, y por sobre todo, agradezco poder amarte otro día más.
+        </p>
+
+        <p>
+          Sabes que siempre digo que nunca tengo suerte en nada, y ya veo que es verdad ya que llegaste a mi vida...
+          supongo que la suerte viene de distintas formas.
         </p>
 
         <p class="letter-sign">
@@ -293,14 +347,18 @@
         </p>
 
         <p class="letter-from">Con todo mi amor.</p>
+       </div>
       </article>
 
-      <button class="text-button next-screen" data-next="gallery-screen">
+      <button class="text-button next-screen" data-next="gallery-screen" type="button">
         NUESTROS RECUERDOS <span>→</span>
       </button>
     </section>
 
-    <!-- 06. GALERÍA DE FOTOGRAFÍAS -->
+    <!-- =====================================
+         06. GALERÍA DE FOTOGRAFÍAS
+         LUCES ESTILO STRANGER THINGS
+    ====================================== -->
     <section class="screen content-screen" id="gallery-screen">
 
       <div class="eyebrow">PEQUEÑOS INSTANTES, GRANDES RECUERDOS</div>
@@ -311,58 +369,83 @@
         Cada fotografía guarda un pedacito de nuestra historia.
       </p>
 
+      <!-- =================================
+           MURO DE LUCES STRANGER THINGS
+           SOLO LAS LETRAS DE LA FRASE
+      ================================== -->
+      <div class="stranger-lights" aria-label="You are my favorite person">
+
+        <!-- PRIMERA LÍNEA: YOU ARE -->
+        <div class="light-line line-one">
+          <span class="light-letter red">Y</span>
+          <span class="light-letter yellow">O</span>
+          <span class="light-letter blue">U</span>
+
+          <span class="word-space"></span>
+
+          <span class="light-letter green">A</span>
+          <span class="light-letter pink">R</span>
+          <span class="light-letter red">E</span>
+        </div>
+
+        <!-- SEGUNDA LÍNEA: MY FAVORITE -->
+        <div class="light-line line-two">
+          <span class="light-letter yellow">M</span>
+          <span class="light-letter blue">Y</span>
+
+          <span class="word-space"></span>
+
+          <span class="light-letter green">F</span>
+          <span class="light-letter pink">A</span>
+          <span class="light-letter red">V</span>
+          <span class="light-letter yellow">O</span>
+          <span class="light-letter blue">R</span>
+          <span class="light-letter green">I</span>
+          <span class="light-letter pink">T</span>
+          <span class="light-letter red">E</span>
+        </div>
+
+        <!-- TERCERA LÍNEA: PERSON -->
+        <div class="light-line line-three">
+          <span class="light-letter blue">P</span>
+          <span class="light-letter green">E</span>
+          <span class="light-letter pink">R</span>
+          <span class="light-letter red">S</span>
+          <span class="light-letter yellow">O</span>
+          <span class="light-letter blue">N</span>
+        </div>
+
+      </div>
+
+      <!-- FOTOGRAFÍAS POLAROID -->
       <div class="polaroid-grid">
 
-        <button class="polaroid tilt-left" data-photo="1">
-          <span class="photo-placeholder">TU<br>FOTO 01</span>
-          <span class="photo-caption">Un recuerdo bonito</span>
+        <button class="polaroid tilt-left" data-photo="1" type="button">
+          <img class="photo" src="assets/img/galery-1.jpg" alt="Un recuerdo bonito">
         </button>
 
-        <button class="polaroid tilt-right" data-photo="2">
-          <span class="photo-placeholder">TU<br>FOTO 02</span>
-          <span class="photo-caption">De esos días especiales</span>
+        <button class="polaroid tilt-right" data-photo="2" type="button">
+          <img class="photo" src="assets/img/galery-2.jpg" alt="De esos días especiales">
         </button>
 
-        <button class="polaroid tilt-right" data-photo="3">
-          <span class="photo-placeholder">TU<br>FOTO 03</span>
-          <span class="photo-caption">Una sonrisa que adoro</span>
+        <button class="polaroid tilt-right" data-photo="3" type="button">
+          <img class="photo" src="assets/img/galery-3.jpg" alt="Una sonrisa que adoro">
         </button>
 
-        <button class="polaroid tilt-left" data-photo="4">
-          <span class="photo-placeholder">TU<br>FOTO 04</span>
-          <span class="photo-caption">Y muchos más por venir</span>
+        <button class="polaroid tilt-left" data-photo="4" type="button">
+          <img class="photo" src="assets/img/galery-4.jpg" alt="Y muchos más por venir">
         </button>
 
       </div>
 
-      <button class="text-button next-screen" data-next="moment-screen">
-        UN MOMENTO PARA TI <span>→</span>
-      </button>
-    </section>
-
-    <!-- 07. VIDEO ESPECIAL -->
-    <section class="screen content-screen" id="moment-screen">
-
-      <div class="eyebrow">UN RECUERDO QUE QUIERO GUARDAR</div>
-
-      <h2 class="section-title script-title">A Moment For You</h2>
-
-      <p class="muted">
-        Porque hay momentos que merecen volver a vivirse.
-      </p>
-
-      <div class="video-frame">
-        <div class="video-placeholder">
-          <span class="play-symbol">▶</span>
-        </div>
-      </div>
-
-      <button class="text-button next-screen" data-next="love-screen">
+      <button class="text-button next-screen" data-next="love-screen" type="button">
         CONTINUAR <span>→</span>
       </button>
     </section>
 
-    <!-- 08. CON TODO MI AMOR -->
+    <!-- =====================================
+         08. CON TODO MI AMOR
+    ====================================== -->
     <section class="screen closing-screen" id="love-screen">
 
       <div class="closing-orbit">♡</div>
@@ -378,13 +461,23 @@
         ...fue pensado especialmente para ti.
       </p>
 
-      <button class="text-button next-screen" data-next="forever-screen">
+      <button class="text-button next-screen" data-next="forever-screen" type="button">
         UNA ÚLTIMA COSA <span>→</span>
       </button>
     </section>
 
-    <!-- 09. SIEMPRE Y PARA SIEMPRE -->
+    <!-- =====================================
+         09. SIEMPRE Y PARA SIEMPRE
+    ====================================== -->
     <section class="screen closing-screen final-screen" id="forever-screen">
+
+      <!-- Cartel colgante de madera: volver a empezar -->
+      <button class="mc-sign" id="restart-sign" type="button" aria-label="Volver a empezar">
+        <span class="mc-sign-swing">
+          <span class="mc-chains" aria-hidden="true"><i></i><i></i></span>
+          <span class="mc-board"><b>VOLVER A</b><b>EMPEZAR</b></span>
+        </span>
+      </button>
 
       <div class="final-star">✧</div>
 
@@ -394,8 +487,8 @@
       </h1>
 
       <p class="final-message">
-        Que la vida nos siga regalando<br>
-        muchos momentos para recordar.
+        Porque es nuestra promesa<br>
+        siempre juntitos.
       </p>
 
       <div class="forever-heart">♡</div>
@@ -411,6 +504,7 @@
 
   <!-- JAVASCRIPT -->
   <script src="script.js"></script>
+  <script src="themes.js"></script>
 
 </body>
 </html>
